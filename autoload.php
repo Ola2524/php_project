@@ -3,16 +3,18 @@
 require_once("config.php");
 
 // Interfaces
-require_once("Models/interfaces/db_Handler.php");
-require_once("Models/interfaces/payment.php");
-require_once("Models/interfaces/login.php");
-require_once("Models/interfaces/download.php");
+require_once("Models/interfaces/Db_Handler.php");
+require_once("Models/interfaces/Validation.php");
+require_once("Models/interfaces/Payment.php");
+require_once("Models/interfaces/Login.php");
+require_once("Models/interfaces/Download.php");
 
 // Controllers
-require_once("Models/mysqlHandler.php");
-require_once("Models/paymentController.php");
-require_once("Models/loginController.php");
-require_once("Models/downloadController.php");
+require_once("Models/MysqlHandler.php");
+require_once("Models/PaymentController.php");
+require_once("Models/LoginController.php");
+require_once("Models/DownloadController.php");
+require_once("Models/ValidationController.php");
 
 function my_autoloader($class) {    
 

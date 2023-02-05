@@ -1,6 +1,6 @@
 <?php
 
-    class downloadController implements download{
+    class DownloadController implements Download{
         public function download(){
 
         }

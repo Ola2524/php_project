@@ -1,8 +1,9 @@
 <?php
 
-    class loginController implements login{
-    public function checkUser($email, $password){
-        
-    }
-
+    class LoginController implements Login{
+        public function checkUser($email, $password){
+            // select from user
+            // check user
+            // session start
+        }
     }

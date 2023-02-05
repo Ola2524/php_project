@@ -1,6 +1,6 @@
 <?php
 
-    class mysqlHandler implements db_Handler
+    class MysqlHandler implements Db_Handler
     {
         private $link;
         private $table;

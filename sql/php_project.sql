@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2023 at 11:01 PM
+-- Generation Time: Feb 05, 2023 at 03:05 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -72,6 +72,7 @@ CREATE TABLE `tokens` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
