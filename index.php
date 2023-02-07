@@ -1,6 +1,4 @@
 <?php
-
-
     require_once("vendor/autoload.php");
     session_start();
     if(!isset($_SESSION["id"]) && $view_name != "login"){
@@ -14,7 +12,7 @@
     if ($page == "login"){
         require_once("views/login.php");
     }if ($page == "download"){
-        require_once("views/login.php");
+        require_once("views/download.php");
     }else{
         require_once("views/payment.php");
     }

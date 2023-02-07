@@ -17,31 +17,18 @@
             // check user
             // session start
             $this->set_table("users");
-                  
+
             $row = $this->getData("email",$this->email);
-          //  print_r($row);
-            $this->checkEmail($row);
-           
+            if(count($row) > 0){
+                if($this->password == $row["password"]){
+                    $_SESSION["id"] = $row["id"];
+                    header("Location:index.php?view=download");
+                    exit();
+                }else{
+                    echo "Wrong Password";
+                }
+            }else{
+                echo "Wrong Email";
+            }         
         }
-
-        public function checkEmail($row){
-            // print_r($row);
-            echo count($row);
-            // if(count($row) > 0){
-            //     $this->checkPassword($row);
-            // }else{
-            //     echo "Wrong Email";
-            // }
-        }
-
-        public function checkPassword($row){
-            echo $row["password"];
-        //     if($this->password == $row["password"]){
-        //         $_SESSION["id"] = $row["id"];
-        //         // header("Location:?view=download");
-        //         exit();
-        //     }else{
-        //         echo "Wrong Password";
-        //     }
-           }
     }

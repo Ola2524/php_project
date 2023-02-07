@@ -1,13 +1,8 @@
 <?php
     $view_name = "login";
-    print_r($_POST);
-
-    // $link = new MysqlHandler("users");
     if(isset($_POST["submit"])){
-        //  $link->getData("email","users",$_POST["email"]);
            $login = new LoginController($_POST["email"],$_POST["password"]);
            $login->checkUser();
-           print_r($_POST);
     }
 ?>
 
