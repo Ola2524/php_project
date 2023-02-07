@@ -17,23 +17,30 @@
 
     </head>
     <body>
-        <div class="container">
-            <form action="index.php?view=login" method="POST">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input"  id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-            </form>
+        <div class="container mt-5">
+            <div class="d-flex flex-column align-items-center m-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 40%;">
+                <form action="index.php?view=login" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input"  id="exampleCheck1">
+                        <label class="form-check-label" name="remember_me" for="exampleCheck1">Remember me</label>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <a href="?view=payment">Don't have account?</a>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
     </html>
