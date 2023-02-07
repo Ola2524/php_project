@@ -1,6 +1,6 @@
 <?php
 
-    class PaymentController implements Payment{
+    class PaymentController implements PaymentInterface{
         public function createUser($email, $password){
             
         }

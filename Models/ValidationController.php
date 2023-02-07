@@ -1,6 +1,6 @@
 <?php
 
-    class ValidationController implements Validation{
+    class ValidationController implements ValidationInterface{
 
         private $email;
         private $password;

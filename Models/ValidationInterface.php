@@ -1,5 +1,5 @@
 <?php
-    interface Validation{
+    interface ValidationInterface{
     public static function validateEmail($email);
     public static function validatePassword($password);
     public static function validateRepeatPassword($repeatPassword, $password);
