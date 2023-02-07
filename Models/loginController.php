@@ -14,13 +14,13 @@
 
         public function checkUser(){
             // select from user
-            // check user
-            // session start
             $this->set_table("users");
-
             $row = $this->getData("email",$this->email);
+
+            // check user
             if(count($row) > 0){
                 if($this->password == $row["password"]){
+                    // session start
                     $_SESSION["id"] = $row["id"];
                     header("Location:index.php?view=download");
                     exit();

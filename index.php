@@ -7,7 +7,7 @@
     }
 
     $pages = array("login","payment","download");
-    $page = isset($_GET["view"]) && in_array($_GET["view"],$pages)?$_GET["view"]:0;
+    $page = isset($_GET["view"]) && in_array($_GET["view"],$pages)?$_GET["view"]:$_GET["view"]="login";
 
     if ($page == "login"){
         require_once("views/login.php");

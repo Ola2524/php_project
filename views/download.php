@@ -1,5 +1,12 @@
 <?php
     $view_name = "download";
+    $download = new DownloadController();
+
+    if(isset($_GET['action'])){
+        if($_GET['action'] == "logout"){
+            $download->logout();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +23,7 @@
         <div class="main w-25 d-flex flex-column m-auto shadow p-3 mb-5 bg-body-tertiary rounded">
             <h3 class="mb-5 text-center">Welcome <?php isset($_POST['name'])? $_POST['name']:"" ?></h3>
             <a href="#" class="btn btn-primary mb-2">Download</a>
-            <a href="#" class="btn btn-danger">Logout</a>
+            <a href="?action=logout" class="btn btn-danger">Logout</a>
         </div>
     </div>
 </body>
