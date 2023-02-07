@@ -11,7 +11,7 @@
 
     if ($page == "payment"){
         require_once("views/payment.php");
-    }if ($page == "download"){
+    }else if ($page == "download"){
         require_once("views/download.php");
     }else{
         require_once("views/login.php");
