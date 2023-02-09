@@ -1,7 +1,7 @@
 <?php
     $view_name = "payment";
     if(isset($_POST["submit"])){
-      $valid = new ValidationController($_POST["email"],$_POST['password'],$_POST["confpassword"],$_POST['name'],$_POST['creditcard'],$_POST['expirationdate']);
+      $valid = new PaymentController($_POST["email"],$_POST['password'],$_POST["confpassword"],$_POST['name'],$_POST['creditcard'],$_POST['expirationdate']);
       $valid->validateEmail();
 }
 //     $errors = array();
