@@ -70,19 +70,20 @@
                 $date_valid=explode("/", $this->credit_card_expiration_date);
                 $current_date=explode("/", date("m/y"));  
 
-                
-                if ($date_valid[1] < $current_date[1] || $date_valid[0] < $current_date[0]) 
+                if ($date_valid[1] < $current_date[1]) 
                 { 
                     header("Location:?view=login");
                     exit();
                 }   
-
                 else if(  $date_valid[1] = $current_date[1] )
-                    {
-                        if( !($date_valid[0]>= $current_date[0])){
-                            $this->addError('credit_card_exp', 'enter valid card expiration date.');
-                        }
+                {
+                    if(($date_valid[0]>= $current_date[0])){
+                        $this->addError('credit_card_exp', 'enter valid card expiration date.');
+                    }else{
+                        header("Location:?view=login");
+                        exit();
                     }
+                }
             }
         }
      
