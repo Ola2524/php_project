@@ -1,6 +1,5 @@
 <?php
     require_once("vendor/autoload.php");
-    session_start();
     if(!isset($_SESSION["id"]) && $view_name != "login"){
         header("Location:index.php?view=login");
         exit();

@@ -19,7 +19,7 @@
     <body>
         <div class="container mt-5">
             <div class="d-flex flex-column align-items-center m-auto shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 40%;">
-                <form action="index.php?view=login" method="POST">
+                <form action="#" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -37,7 +37,7 @@
                         <a href="?view=payment">Don't have account?</a>
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Login</button>
                     </div>
                 </form>
             </div>
