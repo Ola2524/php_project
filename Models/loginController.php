@@ -22,6 +22,7 @@
                 if($this->password == $row["password"]){
                     // session start
                     $_SESSION["id"] = $row["id"];
+                    $_SESSION["name"] = $row["name"];
                     header("Location:index.php?view=download");
                     exit();
                 }else{
