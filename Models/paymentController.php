@@ -11,9 +11,9 @@ class PaymentController extends MysqlHandler implements PaymentInterface
     private $credit_card_expiration_date;
     public $error = array();
     private $order_date;
-    private $init_download_count;
+    private $download_count;
     private $product_id;
-    protected $download_count;
+    private $user_id;
 
     public function __construct($email, $password, $repeat_password, $name, $credit_card, $credit_card_expiration_date)
     {
@@ -25,7 +25,7 @@ class PaymentController extends MysqlHandler implements PaymentInterface
         $this->credit_card_expiration_date = $credit_card_expiration_date;
         // $this->order_date=$order_date;
 
-        $this->init_download_count = 0;
+        $this->download_count = 0;
         $this->product_id = 1;
         $this->link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -117,36 +117,21 @@ class PaymentController extends MysqlHandler implements PaymentInterface
 
 
     public function createUser(){
-        $passHash = sha1($this->password);
-        $query =  mysqli_query($this->link,"insert into users(name,email,Password) VALUES('$this->name','$this->email','$passHash')");
-        $this->checkDownload_count();
+        $passHash = md5($this->password);
+        $query =  mysqli_query($this->link,"insert into users(name,email,Password) VALUES('$this->name','$this->email','$passHash')");     
+        
+        $this->user_id = mysqli_insert_id($this->link);
+        $this->createOrder();
         return $query;
-    }
-    public function checkDownload_count()
-    {
-        $this->set_table("orders");
-        $query = "SELECT `download_count` FROM `user_order` INNER JOIN `orders` ON `orders`.id = `user_order`.order_id INNER JOIN `users` ON users.id = user_order.user_id where users.id = {$_SESSION['id']}";
-        // $this->getDataFromTwoTables("download_count","orders","user_orders");
-        $result = mysqli_query($this->link,  $query);
-        $res = array();
-        while($row = mysqli_fetch_array($result))
-        {
-          $res [] = $row;
-        }
-
-        if (count($res) < MAX_DOWNLOAD){
-            $this->$download_count = $row['download_count'];
-            $this->createOrder();
-        }
     }
 
     public function createOrder()
     {
-        $queryOrder =  mysqli_query($this->link,"insert into orders(order_date,download_count,product_id) VALUES(now(),'$this->init_download_count','$this->product_id')");
+        $queryOrder =  mysqli_query($this->link,"insert into orders(order_date,download_count,product_id) VALUES(now(),'$this->download_count','$this->product_id')");
         
         $order_id = mysqli_insert_id($this->link);
-
-        $user_order_query = "INSERT INTO `user_order`(`user_id`, `order_id`) VALUES ({$_SESSION['id']},{$order_id})";
+        echo $this->user_id;
+        $user_order_query = "INSERT INTO `user_order`(`user_id`, `order_id`) VALUES ({$this->user_id},{$order_id})";
 
         $result = mysqli_query($this->link,  $user_order_query);
     }

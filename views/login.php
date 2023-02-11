@@ -1,5 +1,6 @@
 <?php
     $view_name = "login";
+
     if(isset($_POST["submit"])){
            $login = new LoginController($_POST["email"],$_POST["password"]);
            $login->checkUser();

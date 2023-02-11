@@ -4,7 +4,7 @@
     if(isset($_GET['action'])){
         if($_GET['action'] == "download"){
             $download = new DownloadController();
-            $download->download();
+            $download->checkDownload_count();
         }
     }
 

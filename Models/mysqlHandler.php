@@ -33,6 +33,11 @@ Class MysqlHandler implements DBHandlerInterface
     return $this->query($query);
   }
 
+  public function getUserOrder(){
+    $get_order_query = "SELECT user_order.id as id,download_count,user_id,order_id FROM `user_order` INNER JOIN `orders` ON `orders`.id = `user_order`.order_id INNER JOIN `users` ON users.id = user_order.user_id where users.id = {$_SESSION['id']}";
+    return $this->query($get_order_query);
+  }
+
   // public function getDataFromTwoTables($columns,$table1,$table2){
   //   $query = "SELECT `{$columns}` FROM `{$table1}` INNER JOIN `{$table2}` ON `{$table1}.id` = `{$table2}`.id";
   //   return $this->query($query);
