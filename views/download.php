@@ -1,8 +1,6 @@
 <?php
     $view_name = "download";
     $download = new DownloadController();
-    $pay = new PaymentController('','','','','','');
-    $pay->createOrder();
     if(isset($_GET['action'])){
         if($_GET['action'] == "logout"){
             $download->logout();
