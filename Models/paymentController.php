@@ -23,8 +23,6 @@ class PaymentController extends MysqlHandler implements PaymentInterface
         $this->name = $name;
         $this->credit_card = $credit_card;
         $this->credit_card_expiration_date = $credit_card_expiration_date;
-        // $this->order_date=$order_date;
-
         $this->download_count = 0;
         $this->product_id = 1;
         $this->link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -81,10 +79,6 @@ class PaymentController extends MysqlHandler implements PaymentInterface
     public function validateCreditCard()
     {
 
-        // $cardtype = array(
-        //     "visa"       => "/^4[0-9]{12}(?:[0-9]{3})?$/",
-        //     "mastercard" => "/^5[1-5][0-9]{14}$/",
-        // );
         if (strlen($this->credit_card) === CREDIT_CARD_NUMBERS && !empty($this->credit_card) && is_numeric($this->credit_card)) {
             $this->validateExpirationDate();
         } else $this->addError( 'enter valid card number.');
@@ -128,11 +122,10 @@ class PaymentController extends MysqlHandler implements PaymentInterface
     public function createOrder()
     {
         $queryOrder =  mysqli_query($this->link,"insert into orders(order_date,download_count,product_id) VALUES(now(),'$this->download_count','$this->product_id')");
-        
         $order_id = mysqli_insert_id($this->link);
         echo $this->user_id;
         $user_order_query = "INSERT INTO `user_order`(`user_id`, `order_id`) VALUES ({$this->user_id},{$order_id})";
-
         $result = mysqli_query($this->link,  $user_order_query);
+        return $result;
     }
 }

@@ -8,7 +8,6 @@ Class MysqlHandler implements DBHandlerInterface
   public function __construct()
   {
      return $this->link = mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-    // $this->set_table($table_name);
   }
 
   public function set_table($table)
@@ -38,12 +37,6 @@ Class MysqlHandler implements DBHandlerInterface
     return $this->query($get_order_query);
   }
 
-  // public function getDataFromTwoTables($columns,$table1,$table2){
-  //   $query = "SELECT `{$columns}` FROM `{$table1}` INNER JOIN `{$table2}` ON `{$table1}.id` = `{$table2}`.id";
-  //   return $this->query($query);
-  //   // $row = mysqli_fetch_array($result);
-  //   // return $row;
-  // }
 
   private function query($sql) 
   {

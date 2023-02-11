@@ -6,8 +6,6 @@ interface PaymentInterface{
     public  function validateRepeatPassword();
     public  function validateCreditCard();
     public  function validateExpirationDate();
-    // public  function validatecheckbox();
     public function createUser();
-    public function checkDownload_count(); 
     public function createOrder();
 }

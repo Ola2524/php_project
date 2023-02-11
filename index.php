@@ -17,9 +17,3 @@
     }else{
         require_once("views/login.php");
     }
-//     $dataB = new MysqlHandler;
-//     $dataB->set_table("users");
-
-//    $user= $dataB->getData('email','fatma@gmail');
-//    print_r($user);
-//   var_dump($user);
