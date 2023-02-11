@@ -11,10 +11,11 @@
             $filename = __DIR__ . '/../XYZOSAswan/'.$product['name'].".rar";
 
             if(file_exists($filename)){
+                $this->increaseDownload_count();
                 header('Content-Type: application/zip');
                 header('Content-Disposition: attachment; filename="'.basename($filename).'"');
                 header('Content-Length: ' . filesize($filename));
-
+                
                 flush();
                 readfile($filename);
             }else{
@@ -23,7 +24,18 @@
         }
         public function increaseDownload_count(){
 
+            $get_order_query = "SELECT * FROM `user_order` INNER JOIN `orders` ON `orders`.id = `user_order`.order_id INNER JOIN `users` ON users.id = user_order.user_id where users.id = {$_SESSION['id']}";
+            $result = mysqli_query($this->link,  $get_order_query);
+            $row = mysqli_fetch_array($result);
+            print_r($row);
+
+            $download = $row['download_count']++;
+
+            echo $download;
+            $set_order_query = "UPDATE `orders` INNER JOIN `user_order` ON user_order.order_id = orders.id SET `download_count` = {$download} where user_order.id = {$row['id']}";
+            $result = mysqli_query($this->link,  $set_order_query);
         }
+
         public function logout(){
             $_SESSION["id"] = "";
             session_unset();
