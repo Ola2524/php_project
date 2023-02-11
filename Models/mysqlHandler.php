@@ -31,9 +31,14 @@ Class MysqlHandler implements DBHandlerInterface
   public function getData($columns,$where){
     $query = "SELECT * FROM `{$this->table}` WHERE `$columns` = '{$where}'";
     return $this->query($query);
-    // $row = mysqli_fetch_array($result);
-    // return $row;
   }
+
+  // public function getDataFromTwoTables($columns,$table1,$table2){
+  //   $query = "SELECT `{$columns}` FROM `{$table1}` INNER JOIN `{$table2}` ON `{$table1}.id` = `{$table2}`.id";
+  //   return $this->query($query);
+  //   // $row = mysqli_fetch_array($result);
+  //   // return $row;
+  // }
 
   private function query($sql) 
   {

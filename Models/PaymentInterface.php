@@ -7,7 +7,7 @@ interface PaymentInterface{
     public  function validateCreditCard();
     public  function validateExpirationDate();
     // public  function validatecheckbox();
-    public function createUser($email, $password);
+    public function createUser();
     public function checkDownload_count(); 
     public function createOrder();
 }

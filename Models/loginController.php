@@ -14,12 +14,14 @@
 
         public function checkUser(){
             // select from user
+            $passHash = sha1($this->password);
             $this->set_table("users");
             $row = $this->getData("email",$this->email);
-
             // check user
+            // print_r($row); echo "<br>";
+            // print_r(password_hash("A111111",PASSWORD_BCRYPT));
             if(count($row) > 0){
-                if($this->password == $row["password"]){
+                if($passHash == $row["password"]){
                     // session start
                     $_SESSION["id"] = $row["id"];
                     $_SESSION["name"] = $row["name"];
