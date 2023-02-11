@@ -17,7 +17,7 @@
             }
     
             if ($res[0][0] < MAX_DOWNLOAD){
-                // $this->download();
+                $this->download();
             }else {
                 header("Location:?view=error");
             }
